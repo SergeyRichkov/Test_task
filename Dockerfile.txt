@@ -1,0 +1,8 @@
+FROM python
+
+WORKDIR /rich_/Documents/Python/SibDev_test/minerals_store
+
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+CMD [ "python", "./manage.py" ]

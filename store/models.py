@@ -1,13 +1,6 @@
 from django.db import models
 
 
-# class Customers(models.Model):  #Клиенты
-#
-#     username = models.CharField(max_length=20, null=False)
-#     spent_money = models.FloatField()
-#     gems = models.TextField()
-
-
 class Sales(models.Model):  # Продажи
 
     customer = models.CharField(max_length=40, null=False )  # логин покупателя

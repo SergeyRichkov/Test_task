@@ -1,18 +1,18 @@
 import csv
 from django.db import connection
-from rest_framework import status
+from rest_framework import status, viewsets
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
 from store.models import Sales
-from store.serializers import DualSerializerViewSet
+from store.serializers import SalesSerializer
 
 
 class SalesViewSet(ModelViewSet):
     """ ViewSet для продаж """
     queryset = Sales.objects.all()
-    serializer_class = DualSerializerViewSet.get_serializer_class()
+    serializer_class = SalesSerializer
 
-    def create(self, request):
+    def create(self, request, *args, **kwargs):
         try:
             cursor = connection.cursor()
             cursor.execute("TRUNCATE TABLE store_sales RESTART IDENTITY")
